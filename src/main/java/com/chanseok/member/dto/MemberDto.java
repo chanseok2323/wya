@@ -11,4 +11,5 @@ public class MemberDto {
     private String password;
     private String nickname;
     private RoleType roleType;
+    private String phone;
 }
