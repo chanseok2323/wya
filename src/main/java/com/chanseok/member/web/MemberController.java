@@ -8,7 +8,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @AllArgsConstructor
 @Controller
@@ -25,10 +28,15 @@ public class MemberController {
     }
 
     @PostMapping(value = "/save")
-    public String save(@ModelAttribute MemberDto memberDto) {
+    public String save(@Valid MemberDto form, BindingResult result) {
 
-        memberDto.setPassword(passwordEncoder.encode(memberDto.getPassword()));
-        Member member = new Member(memberDto.getEmail(), memberDto.getPassword(), memberDto.getNickname(), memberDto.getPhone(), RoleType.ROLE_USER);
+        if(result.hasErrors()) {
+            return "member/saveForm";
+        }
+
+        form.setPassword(passwordEncoder.encode(form.getPassword()));
+        Member member = new Member(form.getEmail(), form.getPassword(), form.getNickname(), form.getPhone(), RoleType.ROLE_USER);
+
         memberService.saveMember(member);
         return "login/loginForm";
     }
