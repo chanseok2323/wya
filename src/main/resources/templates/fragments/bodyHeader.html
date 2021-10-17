@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <div class="header" th:fragment="bodyHeader">
-  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+  <nav class="navbar navbar-expand-md bg-dark navbar-dark justify-content-end">
     <a class="navbar-brand" href="/">HOME</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
@@ -12,7 +12,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">도움이 필요해요</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="">능력자 찾기</a>
+            <a class="dropdown-item" th:href="@{/providers/list}">능력자 찾기</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -21,6 +21,11 @@
             <a class="dropdown-item" href="">능력자 등록</a>
           </div>
         </li>
+      </ul>
+    </div>
+    <div>
+      <div class="collapse navbar-collapse flex-grow-0" id="collapsibleNavbar">
+      <ul class="navbar-nav text-right">
         <li>
           <a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/member/save}">회원가입</a>
         </li>
@@ -31,6 +36,7 @@
           <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">로그아웃</a>
         </li>
       </ul>
+      </div>
     </div>
   </nav>
 </div>
