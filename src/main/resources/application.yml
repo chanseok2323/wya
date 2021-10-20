@@ -13,3 +13,9 @@ spring:
 logging:
   level:
     org.hibernate.SQL: debug
+
+wya:
+  upload:
+    aslt_path: D:/upload/
+    rel_path: /resources/upload/
+    file_max_size: 524288000
