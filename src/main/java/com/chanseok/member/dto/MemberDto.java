@@ -1,12 +1,14 @@
 package com.chanseok.member.dto;
 
 import com.chanseok.domain.RoleType;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.validation.constraints.NotEmpty;
 
 @Getter @Setter
+@AllArgsConstructor
 public class MemberDto {
     private Long no;
 
@@ -22,4 +24,7 @@ public class MemberDto {
     @NotEmpty(message = "휴대 전화번호를 입력해주세요.")
     private String phone;
     private RoleType roleType;
+
+    public MemberDto(){
+    }
 }

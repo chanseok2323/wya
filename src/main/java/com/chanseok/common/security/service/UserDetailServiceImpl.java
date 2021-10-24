@@ -1,6 +1,7 @@
 package com.chanseok.common.security.service;
 
 import com.chanseok.domain.Member;
+import com.chanseok.member.dto.MemberDto;
 import com.chanseok.member.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,14 +22,14 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Member member = memberRepository.findByEmail(email);
+        MemberDto memberDto = memberRepository.findByEmail(email);
 
-        if(member == null) {
+        if(memberDto == null) {
             throw new UsernameNotFoundException("email not found exception");
         }
 
         List<GrantedAuthority> role = new ArrayList<>();
-        role.add(new SimpleGrantedAuthority(member.getRoleType().toString()));
-        return new MemberContext(member, role);
+        role.add(new SimpleGrantedAuthority(memberDto.getRoleType().toString()));
+        return new MemberContext(memberDto, role);
     }
 }
