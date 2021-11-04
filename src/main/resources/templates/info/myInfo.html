@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header::header">
+</head>
+<body>
+<div th:replace="fragments/bodyHeader::bodyHeader"></div>
+    <form>
+        <div class="container">
+            <div class="form-group">
+                <label>이메일</label>
+                <input class="form-control" th:field="*{memberDto.email}" disabled>
+            </div>
+            <div class="form-group">
+                <label>닉네임</label>
+                <input class="form-control" th:field="*{memberDto.nickname}">
+            </div>
+            <div class="form-group">
+                <label>휴대전화</label>
+                <input class="form-control" th:field="*{memberDto.phone}">
+            </div>
+        </div>
+    </form>
+</body>
+</html>

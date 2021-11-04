@@ -12,7 +12,7 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">도움이 필요해요</a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" th:href="@{/providers/list}">능력자 찾기</a>
+            <a class="dropdown-item" th:href="@{/providers}">능력자 찾기</a>
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -31,6 +31,12 @@
         </li>
         <li>
           <a sec:authorize="isAnonymous()" class="nav-link" th:href="@{/login}">로그인</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a sec:authorize="isAuthenticated()" class="nav-link dropdown-toggle" href="#" id="navbardrop" sec:authentication="name" data-toggle="dropdown"></a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" th:href="@{/my-info}">info</a>
+          </div>
         </li>
         <li>
           <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">로그아웃</a>
